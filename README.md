@@ -5,3 +5,9 @@
 ```
 ruby fibonacci.rb
 ```
+
+### FizzBuzz
+
+```
+ruby fizzbuzz.rb
+```

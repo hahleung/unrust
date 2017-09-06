@@ -11,3 +11,9 @@ ruby fibonacci.rb
 ```
 ruby fizzbuzz.rb
 ```
+
+### Cows & Bulls
+
+```
+ruby cows_bulls.rb
+```

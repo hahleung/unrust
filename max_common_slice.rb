@@ -37,43 +37,38 @@ end
 
 def max_slice_3(input)
   arr = input.split(',').map(&:to_i)
-  return arr.size if [0, 1].include?(arr.size)
+  return 1 if arr.size == 2 && arr.uniq.size == 1
+  return arr.size if [0, 1, 2].include?(arr.size)
 
-  seed = {
-    last_int: nil,
-    last_int_count: 0,
-    int: nil,
-    count: 0,
-    candidate: 0
-  }
+  seed = { last_int: nil, last_int_count: 0, int: nil, count: 0, candidate: 0 }
+
   arr.reduce(seed) do |a, i|
     if a[:last_int] != i
       if a[:int] != i
-        potential = a[:count] + a[:last_int_count]
-        a[:candidate] = [potential, a[:candidate]].max
-
-        a[:int] = a[:last_int]
+        a[:candidate] = [a[:count] + a[:last_int_count], a[:candidate]].max
         a[:count] = a[:last_int_count]
-        a[:last_int] = i
-        a[:last_int_count] = 1
       else
-        a[:count] = a[:last_int_count]
-        a[:last_int] = i
-        a[:last_int_count] = 1
-        a[:int] = a[:last_int]
+        a[:count] += a[:last_int_count]
       end
+
+      a[:int] = a[:last_int]
+      a[:last_int] = i
+      a[:last_int_count] = 1
     elsif a[:last_int] == i
       a[:last_int_count] += 1
+      puts a[:count] + a[:last_int_count]
+      a[:candidate] = [a[:count] + a[:last_int_count], a[:candidate]].max
     end
-
-    puts i
-    puts a
+    p i
+    p a
     a
-  end
+  end[:candidate]
 end
 
-input = "1, 1, 1, 2, 2, 2, 1, 1, 2, 2, 6, 2, 1, 8"
-max_slice_3(input)
+input = "0,1,0,1,2,3,4,5,6,7,8,9,0,1,0,1,0,1"
+#input = "1,1,1,2,2,2,3,3,3,3,3,3"
+#input = "1, 1, 1, 2, 2, 2, 1, 1, 2, 2, 6, 2, 1, 8"
+p max_slice_3(input)
 exit
 
 # Proof of concept

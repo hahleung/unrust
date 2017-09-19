@@ -72,7 +72,7 @@ p max_slice_3(input)
 exit
 
 # Proof of concept
-inline_data = JSON.parse(File.read("max_common_slice.json"))["set"]
+inline_data = JSON.parse(File.read("famous_exercise.json"))["set"]
 inline_data.each do |data|
   input = data["input"]
   output = data["output"]

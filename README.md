@@ -1,19 +1,5 @@
-## Unrust Ruby
+## Eclair Ruby
 
-### Fibonacci
+A bunch of experiences and katas.
 
-```
-ruby fibonacci.rb
-```
-
-### FizzBuzz
-
-```
-ruby fizzbuzz.rb
-```
-
-### Cows & Bulls
-
-```
-ruby cows_bulls.rb
-```
+No huge fancy Rails monolithes which require dependencies or whatever, most of the files can be run with `ruby my_file.rb`.
